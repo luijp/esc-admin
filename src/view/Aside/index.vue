@@ -111,7 +111,7 @@ import {CircleCloseFilled, Comment, HomeFilled, List, Management, PictureFilled,
   margin-bottom: 50px;
 }
 
-.router-link-active>div {
+.router-link-exact-active>div {
   color: #2f2f30;
   background: #f3f3fb;
 }

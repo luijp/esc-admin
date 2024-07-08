@@ -6,16 +6,24 @@ import Setting from './view/Setting/index.vue'
 import Tag from './view/Tag/index.vue'
 import Dashboard from './view/Dashboard/index.vue'
 import Login from './view/Login/index.vue'
+import Admin from './view/Admin.vue'
+import Logout from './view/Logout.vue'
 
 const routes = [
-    { path: '/', component: Dashboard },
-    { path: '/post', component: Post },
-    { path: '/category', component: Category },
-    { path: '/attach', component: Attach },
-    { path: '/comment', component: Comment },
-    { path: '/setting', component: Setting },
-    { path: '/tag', component: Tag },
+    {
+        component: Admin,
+        children:[
+            { path: '/', component: Dashboard },
+            { path: '/post', component: Post },
+            { path: '/category', component: Category },
+            { path: '/attach', component: Attach },
+            { path: '/comment', component: Comment },
+            { path: '/setting', component: Setting },
+            { path: '/tag', component: Tag },
+        ]
+    },
     { path: '/login', component: Login },
+    { path: '/logout', component: Logout },
 ]
 
 export default routes
