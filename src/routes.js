@@ -12,8 +12,10 @@ import Logout from './view/Logout.vue'
 const routes = [
     {
         component: Admin,
+        path: '/',
         children:[
-            { path: '/', component: Dashboard },
+            { path: '/', redirect: '/dashboard' },
+            { path: '/dashboard', component: Dashboard },
             { path: '/post', component: Post },
             { path: '/category', component: Category },
             { path: '/attach', component: Attach },

@@ -3,7 +3,9 @@
 </script>
 
 <template>
-Category
+<div class="category-container">
+
+</div>
 </template>
 
 <style scoped>

@@ -9,7 +9,7 @@ import {CircleCloseFilled, Comment, HomeFilled, List, Management, PictureFilled,
       ESC Admin
     </div>
     <div class="nav">
-      <RouterLink to="/">
+      <RouterLink to="/dashboard">
         <div class="menuItem">
           <el-icon size="28">
             <HomeFilled/>

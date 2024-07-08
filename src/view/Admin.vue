@@ -28,6 +28,7 @@ import Aside from './Aside/index.vue'
   flex: 1 1 auto;
   min-width: 800px;
   background: #f4f4f6;
+  padding: 50px 50px;
 }
 
 </style>
