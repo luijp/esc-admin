@@ -126,6 +126,11 @@ const editTagDialogBtnHandler = async (save)=>{
 }
 .tag-content{
   margin-top: 20px;
+  padding: 30px;
+  min-height: 300px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
   .el-tag{
     margin-right: 15px;
     cursor: pointer;
