@@ -6,6 +6,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './reset.css'
 import routes from './routes.js'
 import {createRouter, createWebHistory} from "vue-router";
+import { createPinia } from 'pinia'
 
 const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -15,6 +16,8 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 })
+const pinia = createPinia()
     app.use(ElementPlus)
         .use(router)
+        .use(pinia)
     .mount('#app')
