@@ -9,10 +9,14 @@ const editTagRef = ref({
   isNew: false,
   tag: {},
 })
-onMounted(async ()=>{
+
+const refreshTags = async ()=>{
   tagsRef.value = (await tagsApi.getTags()).data
   isLoaded.value = true
-})
+}
+onMounted(()=>{
+  refreshTags()
+} )
 
 const handleTagClose = (tag)=>{
   ElMessageBox.confirm('确定要删除 ' + tag.name +' 么？',
@@ -27,6 +31,7 @@ const handleTagClose = (tag)=>{
         message: '删除成功',
         type: 'success',
       })
+      await refreshTags()
     }else{
       ElMessage.error("删除失败")
     }
@@ -54,6 +59,7 @@ const editTagDialogBtnHandler = async (save)=>{
         message: 'Tag 更新成功',
         type: 'success',
       })
+      await refreshTags()
       editTagRef.value.showDialog = false
     }else{
       ElMessage.error(result.msg)
