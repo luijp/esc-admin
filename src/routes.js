@@ -5,7 +5,6 @@ import Post from './view/Post/index.vue'
 import Setting from './view/Setting/index.vue'
 import Tag from './view/Tag/index.vue'
 import Dashboard from './view/Dashboard/index.vue'
-import Login from './view/Login/index.vue'
 import Admin from './view/Admin.vue'
 import Logout from './view/Logout.vue'
 
@@ -24,7 +23,6 @@ const routes = [
             { path: '/tag', component: Tag },
         ]
     },
-    { path: '/login', component: Login },
     { path: '/logout', component: Logout },
 ]
 
