@@ -1,6 +1,16 @@
 <script setup>
 
 import {CircleCloseFilled, Comment, HomeFilled, List, Management, PictureFilled, Tools} from "@element-plus/icons-vue";
+import * as authApi from '../../api/auth.js'
+import {ElMessage} from "element-plus";
+const handleLogout = async ()=>{
+  await authApi.logout()
+  document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  ElMessage({
+    message:"已登出",
+    type:"success",
+  })
+}
 </script>
 
 <template>
@@ -73,15 +83,13 @@ import {CircleCloseFilled, Comment, HomeFilled, List, Management, PictureFilled,
         </div>
       </RouterLink>
 
-      <RouterLink to="/logout">
-        <div class="actionItem">
 
+        <div class="actionItem" @click="handleLogout">
           <el-icon size="28">
             <CircleCloseFilled/>
           </el-icon>
           <span>登出</span>
         </div>
-      </RouterLink>
     </div>
 
   </div>

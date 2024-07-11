@@ -37,8 +37,7 @@ instance.interceptors.response.use(function (resp) {
             ]),
             confirmButtonText: '登录',
             beforeClose: async (action,instance,done)=>{
-                console.log(username.value,password.value)
-                const status = await authApi.login(username.value,password.value)
+                const status = await authApi.login(username.value, password.value)
                 if(status.code === 0){
                     done();
                 }
