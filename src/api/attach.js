@@ -1,6 +1,6 @@
 import request from "./request.js";
 
-export async function getAllAttach(pageNum=1, pageSize=5){
+export async function getAllAttach(pageNum=1, pageSize=50){
     return await request.post(`/attach/list/${pageNum}/${pageSize}`)
 }
 
