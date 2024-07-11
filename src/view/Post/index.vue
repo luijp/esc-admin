@@ -3,7 +3,9 @@
 </script>
 
 <template>
-Post
+<div class="post-container">
+  <RouterView />
+</div>
 </template>
 
 <style scoped>

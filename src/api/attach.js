@@ -14,13 +14,18 @@ export async function updateAttach({file}){
     const result = await request.post(`/attach/upload`, formData,{headers: {
             'Content-Type': 'multipart/form-data',
         },})
-    if(result.data.code !== 0){
+    if(result.code !== 0){
         throw new Error()
     }
     return result
 
 }
 
-export async function getAttachUrl(uuid){
-    return request.defaults.baseURL + `/attach/download/${uuid}`
+export async function getAttachUrl(uuid,type=1){
+    if(type===1){
+        return request.defaults.baseURL + `/attach/download/${uuid}`
+    }else{
+        return request.defaults.baseURL + `/attach/image/${uuid}`
+    }
+
 }

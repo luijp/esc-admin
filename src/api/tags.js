@@ -11,3 +11,7 @@ export async function updateTag(tag){
 export async function deleteTag(tagId){
     return await request.post(`/tags/del/${tagId}`)
 }
+
+export async function getTagsByPostId(postId){
+    return await request.get(`/tags/get/${postId}`)
+}

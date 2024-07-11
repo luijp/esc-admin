@@ -7,6 +7,8 @@ import Tag from './view/Tag/index.vue'
 import Dashboard from './view/Dashboard/index.vue'
 import Admin from './view/Admin.vue'
 import Logout from './view/Logout.vue'
+import ListPost from "./view/Post/component/ListPost.vue"
+import UpdatePost from "./view/Post/component/UpdatePost.vue"
 
 const routes = [
     {
@@ -15,7 +17,12 @@ const routes = [
         children:[
             { path: '/', redirect: '/dashboard' },
             { path: '/dashboard', component: Dashboard },
-            { path: '/post', component: Post },
+            { path: '/post', component: Post ,
+            children:[
+                { path: '/post/update/:id', component: UpdatePost },
+                { path: '/post/update', component: UpdatePost },
+                { path: '/post', component: ListPost },
+            ]},
             { path: '/category', component: Category },
             { path: '/attach', component: Attach },
             { path: '/comment', component: Comment },

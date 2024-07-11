@@ -15,3 +15,7 @@ export async function updateCategories(category) {
 export async function delCategories(id){
     return await request.post(`categories/del/${id}`)
 }
+
+export async function getCategoriesByPostId(postId){
+    return await request.get(`/categories/get/${postId}`)
+}
