@@ -9,9 +9,9 @@ export async function getCategoriesList() {
 }
 
 export async function updateCategories(category) {
-    return await request.post('/categories/update', category);
+    return await request.post('/categories/update', category)
 }
 
 export async function delCategories(id){
-    return await request.post(`categories/del/${id}`);
+    return await request.post(`categories/del/${id}`)
 }

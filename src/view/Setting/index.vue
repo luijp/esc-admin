@@ -9,9 +9,9 @@ const globalSettingsRef = ref({})
 const customSettingsRef = ref({})
 const isLoaded = ref(false)
 
-onMounted(()=>{
-  refreshGlobalSettings()
-  refreshCustomSettings()
+onMounted(async ()=>{
+  await refreshGlobalSettings()
+  await refreshCustomSettings()
   isLoaded.value = true
 } )
 const refreshGlobalSettings = async ()=>{
