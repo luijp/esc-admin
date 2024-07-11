@@ -85,7 +85,7 @@ const handleSaveCustomSettings = async ()=>{
       <el-button type="primary" plain @click="handleSaveGlobalSettings">保存</el-button>
     </div>
     <div class="content">
-      <el-row v-for="(v,k) in globalSettingsRef" :key="k">
+      <el-row v-for="(v,k) in globalSettingsRef" :key="k" style="margin-bottom:20px">
         <el-col :span="5">
           {{k}}
         </el-col>
@@ -104,12 +104,12 @@ const handleSaveCustomSettings = async ()=>{
 
     </div>
     <div class="content">
-      <el-row v-for="(v,k) in customSettingsRef" :key="k">
+      <el-row v-for="(v,k) in customSettingsRef" :key="k" style="margin-bottom:20px">
         <el-col :span="5">
           {{k}}
         </el-col>
         <el-col :span="8">
-          <el-input v-model="customSettingsRef[k]" style="width: 240px"/>
+          <el-input v-model="customSettingsRef[k]" style="width: 240px;"/>
         </el-col>
       </el-row>
     </div>
