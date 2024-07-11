@@ -7,6 +7,7 @@ import './reset.css'
 import routes from './routes.js'
 import {createRouter, createWebHistory} from "vue-router";
 import { createPinia } from 'pinia'
+import setTitle from './util/setTitle.js'
 
 const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -15,6 +16,11 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 const router = createRouter({
     history: createWebHistory(),
     routes,
+})
+router.afterEach((to,from)=>{
+    if(to.meta.title){
+        setTitle.routeTitle.value = to.meta.title
+    }
 })
 const pinia = createPinia()
     app.use(ElementPlus)
