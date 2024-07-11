@@ -1,7 +1,8 @@
 <script setup>
 import * as categoriesApi from '../../api/categories.js'
 import {computed, onMounted, ref} from "vue";
-import {ElMessage} from "element-plus";
+import {ElMessage, ElMessageBox} from "element-plus";
+import * as postApi from "../../api/post.js";
 
 const categoriesRef = ref(null)
 const categoriesListRef = ref(null)
@@ -35,16 +36,23 @@ const editCategoryHandler = (data)=>{
 }
 
 const deleteCategoryHandler = async (data)=>{
-  const result = await categoriesApi.delCategories(data.id)
-  if(result.code === 0){
-    ElMessage({
-      message: '分类删除成功',
-      type: 'success',
-    })
-    await refreshCategories()
-  }else{
-    ElMessage.error(result.msg)
-  }
+  ElMessageBox.confirm('确定要删除 ' + data.name +' 么？',
+      'Warning', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(async ()=>{
+    const status = await categoriesApi.delCategories(data.id)
+    if(status){
+      ElMessage({
+        message: '删除成功',
+        type: 'success',
+      })
+      await refreshCategories()
+    }else{
+      ElMessage.error("删除失败")
+    }
+  })
 }
 
 const editCategoryDialogBtnHandler = async (save)=>{

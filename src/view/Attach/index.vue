@@ -1,9 +1,10 @@
 <script setup>
 import {computed, onMounted, ref, watch, watchEffect} from "vue";
 import * as attachApi from '../../api/attach.js'
-import {ElMessage} from "element-plus";
+import {ElMessage, ElMessageBox} from "element-plus";
 import Upload from '../../component/Upload/index.vue'
 import {getAttachUrl} from "../../api/attach.js";
+import * as tagsApi from "../../api/tags.js";
 
 const handleNewAttach = ()=>{
   newAttachRef.value.showDialog = true
@@ -18,7 +19,7 @@ const isLoaded = ref(false)
 const attachRef = ref(null)
 
 watchEffect(async ()=>{
-  attachRef.value = (await attachApi.getAllAttach(currentPage.value, 50)).data
+  attachRef.value = (await attachApi.getAllAttach(currentPage.value)).data
   isLoaded.value = true
 })
 
@@ -31,25 +32,32 @@ watch(
     }
 )
 const refreshAttach = async ()=>{
-  attachRef.value = (await attachApi.getAllAttach(currentPage.value, 5)).data
+  attachRef.value = (await attachApi.getAllAttach(currentPage.value)).data
 }
 
-const handleAttachView = async (uuid) =>{
-  const url = await attachApi.getAttachUrl(uuid);
+const handleAttachView = async (file) =>{
+  const url = await attachApi.getAttachUrl(file.uuid);
   window.open(url,'_blank')
 }
 
-const handleAttachDel = async (uuid) =>{
-  const result = await attachApi.delAttach(uuid);
-  if(result.code === 0){
-    ElMessage({
-      message: '附件删除成功',
-      type: 'success',
-    })
-    await refreshAttach()
-  }else{
-    ElMessage.error(result.msg)
-  }
+const handleAttachDel = async (file) =>{
+  ElMessageBox.confirm('确定要删除 ' + file.name +' 么？',
+      'Warning', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(async ()=>{
+    const status = await attachApi.delAttach(file.uuid)
+    if(status){
+      ElMessage({
+        message: '删除成功',
+        type: 'success',
+      })
+      await refreshAttach()
+    }else{
+      ElMessage.error("删除失败")
+    }
+  })
 }
 
 
@@ -68,8 +76,8 @@ const handleAttachDel = async (uuid) =>{
         <el-table-column prop="createTime" label="上传时间" />
         <el-table-column label="操作">
           <template #default="scope">
-            <el-button type="primary" size="small" plain @click="handleAttachView(scope.row.uuid)">查看</el-button>
-            <el-button type="danger" size="small" plain @click="handleAttachDel(scope.row.uuid)">删除</el-button>
+            <el-button type="primary" size="small" plain @click="handleAttachView(scope.row)">查看</el-button>
+            <el-button type="danger" size="small" plain @click="handleAttachDel(scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
