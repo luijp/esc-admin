@@ -6,7 +6,7 @@ import {h, ref} from 'vue'
 import * as authApi from './auth'
 
 const instance = axios.create({
-    baseURL: "http://localhost:8080/api",
+    baseURL: "/api",
     withCredentials: true,
 });
 instance.interceptors.response.use(function (resp) {
