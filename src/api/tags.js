@@ -1,17 +1,17 @@
 import request from "./request.js";
 
-export async function getTags(){
+export async function getTags() {
     return await request.get("/tags/")
 }
 
-export async function updateTag(tag){
+export async function updateTag(tag) {
     return await request.post('/tags/update', tag)
 }
 
-export async function deleteTag(tagId){
+export async function deleteTag(tagId) {
     return await request.post(`/tags/del/${tagId}`)
 }
 
-export async function getTagsByPostId(postId){
+export async function getTagsByPostId(postId) {
     return await request.get(`/tags/get/${postId}`)
 }

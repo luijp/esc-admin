@@ -3,7 +3,7 @@
 </script>
 
 <template>
-Dashboard
+  Dashboard
 </template>
 
 <style scoped>

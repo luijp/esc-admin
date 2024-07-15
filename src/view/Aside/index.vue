@@ -3,12 +3,13 @@
 import {CircleCloseFilled, Comment, HomeFilled, List, Management, PictureFilled, Tools} from "@element-plus/icons-vue";
 import * as authApi from '../../api/auth.js'
 import {ElMessage} from "element-plus";
-const handleLogout = async ()=>{
+
+const handleLogout = async () => {
   await authApi.logout()
   document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   ElMessage({
-    message:"已登出",
-    type:"success",
+    message: "已登出",
+    type: "success",
   })
 }
 </script>
@@ -84,12 +85,12 @@ const handleLogout = async ()=>{
       </RouterLink>
 
 
-        <div class="actionItem" @click="handleLogout">
-          <el-icon size="28">
-            <CircleCloseFilled/>
-          </el-icon>
-          <span>登出</span>
-        </div>
+      <div class="actionItem" @click="handleLogout">
+        <el-icon size="28">
+          <CircleCloseFilled/>
+        </el-icon>
+        <span>登出</span>
+      </div>
     </div>
 
   </div>
@@ -119,7 +120,7 @@ const handleLogout = async ()=>{
   margin-bottom: 50px;
 }
 
-.router-link-active>div {
+.router-link-active > div {
   color: #2f2f30;
   background: #f3f3fb;
 }

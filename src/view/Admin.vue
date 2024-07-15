@@ -5,26 +5,28 @@ import Aside from './Aside/index.vue'
 <template>
   <div class="admin-container">
     <div class="aside">
-      <Aside />
+      <Aside/>
     </div>
     <div class="content">
-      <RouterView />
+      <RouterView/>
     </div>
   </div>
 </template>
 
 <style scoped>
-.admin-container{
+.admin-container {
   height: 100vh;
   display: flex;
 }
-.aside{
+
+.aside {
   flex: 0 0 auto;
 
   box-sizing: border-box;
   width: 260px;
 }
-.content{
+
+.content {
   flex: 1 1 auto;
   min-width: 800px;
   background: #f4f4f6;

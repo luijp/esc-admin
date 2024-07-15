@@ -3,7 +3,6 @@ import {ref, watchEffect} from "vue";
 import * as postApi from "../../../api/post.js";
 import {useRouter} from "vue-router";
 import {ElMessage, ElMessageBox} from "element-plus";
-import * as tagsApi from "../../../api/tags.js";
 
 
 const currentPage = ref(1)
@@ -14,7 +13,7 @@ watchEffect(async () => {
   isLoaded.value = true
 })
 
-const refreshPosts = async ()=>{
+const refreshPosts = async () => {
   postRef.value = (await postApi.getAllPost(currentPage.value)).data
   isLoaded.value = true
 }
@@ -32,20 +31,20 @@ const handlePostEdit = (post) => {
 }
 
 const handlePostDel = async (post) => {
-  ElMessageBox.confirm('确定要删除 ' + post.name +' 么？',
+  ElMessageBox.confirm('确定要删除 ' + post.name + ' 么？',
       'Warning', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
-      }).then(async ()=>{
+      }).then(async () => {
     const status = await postApi.deletePost(post.id)
-    if(status){
+    if (status) {
       ElMessage({
         message: '删除成功',
         type: 'success',
       })
       await refreshPosts()
-    }else{
+    } else {
       ElMessage.error("删除失败")
     }
   })
@@ -57,24 +56,24 @@ const handlePostDel = async (post) => {
   <div class="list-post-container">
     <div class="header">
       <h2>文章管理</h2>
-      <el-button type="success" plain @click="handleNewPost">新增</el-button>
+      <el-button plain type="success" @click="handleNewPost">新增</el-button>
     </div>
-    <div class="content" v-if="isLoaded">
+    <div v-if="isLoaded" class="content">
 
       <el-table :data="postRef.postsList" stripe style="width: 100%">
-        <el-table-column prop="title" label="标题"/>
-        <el-table-column prop="createTime" label="时间"/>
+        <el-table-column label="标题" prop="title"/>
+        <el-table-column label="时间" prop="createTime"/>
         <el-table-column label="操作">
           <template #default="scope">
-            <el-button type="primary" size="small" plain @click="handlePostView(scope.row)">查看</el-button>
-            <el-button type="primary" size="small" plain @click="handlePostEdit(scope.row)">编辑</el-button>
-            <el-button type="danger" size="small" plain @click="handlePostDel(scope.row)">删除</el-button>
+            <el-button plain size="small" type="primary" @click="handlePostView(scope.row)">查看</el-button>
+            <el-button plain size="small" type="primary" @click="handlePostEdit(scope.row)">编辑</el-button>
+            <el-button plain size="small" type="danger" @click="handlePostDel(scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
 
-      <el-pagination layout="prev, pager, next"
-                     :page-count="Math.ceil(postRef.total/postRef.size)"
+      <el-pagination :page-count="Math.ceil(postRef.total/postRef.size)"
+                     layout="prev, pager, next"
                      @current-change="(value)=>currentPage = value"
       />
     </div>

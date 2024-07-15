@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -6,7 +6,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './reset.css'
 import routes from './routes.js'
 import {createRouter, createWebHistory} from "vue-router";
-import { createPinia } from 'pinia'
+import {createPinia} from 'pinia'
 import setTitle from './util/setTitle.js'
 
 const app = createApp(App);
@@ -17,13 +17,13 @@ const router = createRouter({
     history: createWebHistory('/admin/'),
     routes,
 })
-router.afterEach((to,from)=>{
-    if(to.meta.title){
+router.afterEach((to, from) => {
+    if (to.meta.title) {
         setTitle.routeTitle.value = to.meta.title
     }
 })
 const pinia = createPinia()
-    app.use(ElementPlus)
-        .use(router)
-        .use(pinia)
+app.use(ElementPlus)
+    .use(router)
+    .use(pinia)
     .mount('#app')

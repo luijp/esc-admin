@@ -12,10 +12,10 @@ export async function updateCategories(category) {
     return await request.post('/categories/update', category)
 }
 
-export async function delCategories(id){
+export async function delCategories(id) {
     return await request.post(`categories/del/${id}`)
 }
 
-export async function getCategoriesByPostId(postId){
+export async function getCategoriesByPostId(postId) {
     return await request.get(`/categories/get/${postId}`)
 }

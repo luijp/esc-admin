@@ -9,9 +9,9 @@ export async function getCustom() {
 }
 
 export async function updateGlobal(globalSettings) {
-    return await request.post('settings/global',globalSettings)
+    return await request.post('settings/global', globalSettings)
 }
 
 export async function updateCustom(customSettings) {
-    return await request.post('settings/custom',customSettings)
+    return await request.post('settings/custom', customSettings)
 }

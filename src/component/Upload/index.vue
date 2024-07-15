@@ -2,28 +2,31 @@
 
 import * as attachApi from "../../api/attach.js";
 import {UploadFilled} from "@element-plus/icons-vue";
+
 const emit = defineEmits(['success', 'error'])
-const handleUploadError = (result)=>{
-  emit('error',result)
+const handleUploadError = (result) => {
+  emit('error', result)
 }
 
-const handleUploadSuccess = (result)=>{
-  emit('success',result)
+const handleUploadSuccess = (result) => {
+  emit('success', result)
 }
 </script>
 
 <template>
   <el-upload
-      class="upload-demo"
-      drag
       :http-request="attachApi.updateAttach"
-      multiple
-      with-credentials
-      name="files"
       :on-error="handleUploadError"
       :on-success="handleUploadSuccess"
+      class="upload-demo"
+      drag
+      multiple
+      name="files"
+      with-credentials
   >
-    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+    <el-icon class="el-icon--upload">
+      <upload-filled/>
+    </el-icon>
     <div class="el-upload__text">
       Drop file here or <em>click to upload</em>
     </div>

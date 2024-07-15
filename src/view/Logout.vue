@@ -3,7 +3,7 @@
 </script>
 
 <template>
-Logout
+  Logout
 </template>
 
 <style scoped>
