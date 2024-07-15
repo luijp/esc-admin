@@ -35,9 +35,13 @@ const refreshAttach = async ()=>{
   attachRef.value = (await attachApi.getAllAttach(currentPage.value)).data
 }
 
-const handleAttachView = async (file) =>{
-  const url = await attachApi.getAttachUrl(file.uuid);
-  window.open(url,'_blank')
+const handleAttachView = (file) =>{
+  return attachApi.getAttachUrl(file.uuid,2);
+  //window.open(url,'_blank')
+}
+
+const handleAttachUrlDownload = (file) =>{
+  return attachApi.getAttachUrl(file.uuid);
 }
 
 const handleAttachDel = async (file) =>{
@@ -76,7 +80,8 @@ const handleAttachDel = async (file) =>{
         <el-table-column prop="createTime" label="上传时间" />
         <el-table-column label="操作">
           <template #default="scope">
-            <el-button type="primary" size="small" plain @click="handleAttachView(scope.row)">查看</el-button>
+            <a :href="handleAttachView(scope.row)"><el-button type="primary" size="small" plain>查看</el-button></a>
+            <a :href="handleAttachUrlDownload(scope.row)"><el-button type="primary" size="small" plain>下载</el-button></a>
             <el-button type="danger" size="small" plain @click="handleAttachDel(scope.row)">删除</el-button>
           </template>
         </el-table-column>

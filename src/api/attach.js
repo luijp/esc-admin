@@ -21,7 +21,7 @@ export async function updateAttach({file}){
 
 }
 
-export async function getAttachUrl(uuid,type=1){
+export function getAttachUrl(uuid,type=1){
     if(type===1){
         return request.defaults.baseURL + `/attach/download/${uuid}`
     }else{
