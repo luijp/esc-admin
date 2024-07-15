@@ -80,8 +80,8 @@ const handleAttachDel = async (file) =>{
         <el-table-column prop="createTime" label="上传时间" />
         <el-table-column label="操作">
           <template #default="scope">
-            <a :href="handleAttachView(scope.row)"><el-button type="primary" size="small" plain>查看</el-button></a>
-            <a :href="handleAttachUrlDownload(scope.row)"><el-button type="primary" size="small" plain>下载</el-button></a>
+            <a :href="handleAttachView(scope.row)" target="_blank"><el-button type="primary" size="small" plain>查看</el-button></a>
+            <a :href="handleAttachUrlDownload(scope.row)" target="_blank"><el-button type="primary" size="small" plain>下载</el-button></a>
             <el-button type="danger" size="small" plain @click="handleAttachDel(scope.row)">删除</el-button>
           </template>
         </el-table-column>
