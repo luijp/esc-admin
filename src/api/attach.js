@@ -14,7 +14,7 @@ export async function updateAttach({file}){
     const result = await request.post(`/attach/upload`, formData,{headers: {
             'Content-Type': 'multipart/form-data',
         },})
-    if(result.code !== 0){
+    if(result.code !== 0 || result.data.success !== true){
         throw new Error()
     }
     return result
