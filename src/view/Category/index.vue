@@ -4,11 +4,16 @@ import {onMounted, ref} from "vue";
 import {ElMessage, ElMessageBox} from "element-plus";
 
 const categoriesRef = ref(null)
-const categoriesListRef = ref(null)
+const categoriesListRef = ref([])
 const isLoaded = ref(false)
 const refreshCategories = async () => {
   categoriesRef.value = (await categoriesApi.getAllCategories()).data;
   categoriesListRef.value = (await categoriesApi.getCategoriesList()).data;
+  categoriesListRef.value.unshift({
+    id: 0,
+    alias: '[root]',
+    name: '[根]'
+  })
   isLoaded.value = true
 }
 const editCategoryRef = ref({
@@ -25,7 +30,7 @@ onMounted(() => {
 const handleNewCategory = () => {
   editCategoryRef.value.showDialog = true
   editCategoryRef.value.isNew = true
-  editCategoryRef.value.category = {name: "", alias: "", id: null, parentId: 1}
+  editCategoryRef.value.category = {name: "", alias: "", id: null, parentId: 0}
 }
 
 const editCategoryHandler = (data) => {
@@ -63,13 +68,12 @@ const editCategoryDialogBtnHandler = async (save) => {
         type: 'success',
       })
       await refreshCategories()
-      editCategoryRef.value.showDialog = false
+
     } else {
       ElMessage.error(result.msg)
     }
-  } else {
-    editCategoryRef.value.showDialog = false
   }
+    editCategoryRef.value.showDialog = false
 }
 </script>
 
