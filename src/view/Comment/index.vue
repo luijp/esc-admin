@@ -37,6 +37,18 @@ const handleOpDel = async ()=>{
 
 <template>
   <div class="comment-container" v-if="isLoaded">
+    <div class="header">
+      <h2>评论管理</h2>
+      <div class="op">
+        <el-button type="success" :disabled="selectedCommentRef.length === 0" @click="handleOpPass" plain>通过</el-button>
+        <el-button type="warning" :disabled="selectedCommentRef.length === 0" @click="handleOpDeny" plain>驳回</el-button>
+        <el-popconfirm title="确认删除所选全部评论？" on-confirm="handleOpDel">
+          <template #reference>
+            <el-button :disabled="selectedCommentRef.length === 0" type="danger" plain>删除</el-button>
+          </template>
+        </el-popconfirm>
+      </div>
+    </div>
     <el-table
         ref="multipleTableRef"
         :data="commentListRef.commentList"
@@ -54,16 +66,7 @@ const handleOpDel = async ()=>{
       </el-table-column>
 
     </el-table>
-    <div class="op">
-      <el-button type="success" @click="handleOpPass" plain>通过</el-button>
-      <el-button type="warning" @click="handleOpDeny" plain>驳回</el-button>
-      <el-popconfirm title="确认删除所选全部评论？" on-confirm="handleOpDel">
-        <template #reference>
-          <el-button type="danger" plain>删除</el-button>
-        </template>
-      </el-popconfirm>
 
-    </div>
     <el-pagination :page-count="Math.ceil(commentListRef.total/commentListRef.pageSize)"
                    layout="prev, pager, next"
                    :hide-on-single-page="true"
@@ -73,6 +76,19 @@ const handleOpDel = async ()=>{
 </template>
 
 <style scoped>
+.comment-container{
+  margin: 0 auto;
+  width: 800px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.el-table{
+  padding: 20px;
+  border-radius: 10px;
+}
 .op{
   text-align: right;
   margin: 20px;
