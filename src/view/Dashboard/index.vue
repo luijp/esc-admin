@@ -76,4 +76,7 @@ onMounted(async ()=>{
 h3{
   margin-bottom: 10px;
 }
+.login-failed-item{
+  font-size: 14px;
+}
 </style>
