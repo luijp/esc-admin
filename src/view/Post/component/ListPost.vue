@@ -23,7 +23,7 @@ const handleNewPost = () => {
 }
 
 const handlePostView = (post) => {
-  console.log("handlePostView", post.id)
+  window.location.href = "/post/" + post.id;
 }
 
 const handlePostEdit = (post) => {
