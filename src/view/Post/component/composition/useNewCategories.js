@@ -2,7 +2,7 @@ import * as categoriesApi from '../../../../api/categories.js';
 import * as postApi from '../../../../api/post.js';
 
 export default async function (categoryList, postId) {
-    if (!categoryList) {
+    if (!categoryList || categoryList.length === 0) {
         return
     }
 
@@ -14,7 +14,7 @@ export default async function (categoryList, postId) {
         categoriesIdCollections[item.id] = item
     })
     const categoryResult = []
-    for (const categories of categoryList.value) {
+    for (const categories of categoryList) {
         if (!categoriesNameCollections.hasOwnProperty(categories)) {
             await categoriesApi.updateCategories({
                 name: categories,

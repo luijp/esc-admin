@@ -2,7 +2,8 @@ import * as tagsApi from '../../../../api/tags.js';
 import * as postApi from '../../../../api/post.js';
 
 export default async function (tagList, postId) {
-    if (!tagList) {
+    console.log(tagList)
+    if (!tagList || tagList.length === 0) {
         return
     }
     const tagsList = (await tagsApi.getTags()).data
@@ -13,7 +14,7 @@ export default async function (tagList, postId) {
         tagsIdCollections[item.id] = item
     })
     const tagResult = []
-    for (const tag of tagList.value) {
+    for (const tag of tagList) {
         if (!tagsNameCollections.hasOwnProperty(tag)) {
             await tagsApi.updateTag({
                 name: tag,

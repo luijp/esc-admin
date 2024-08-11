@@ -57,8 +57,8 @@ const handleSavePost = () => {
 
 const savePost = async (isPublish = false) => {
   const postId = (await postApi.updatePost(postRef.value)).data
-  await useNewTags(selectedTagsRef, postId)
-  await useNewCategories(selectedCategoriesRef, postId)
+  await useNewTags(selectedTagsRef.value, postId)
+  await useNewCategories(selectedCategoriesRef.value, postId)
 
   ElMessage({
     message: "文章更新成功",
