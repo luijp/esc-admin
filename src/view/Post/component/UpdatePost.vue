@@ -24,7 +24,7 @@ const postRef = ref({
   "cover": null,
   "createTime": null,
   "updateTime": null,
-  "visible": true,
+  "visible": "1",
   "encrypt": null,
   "type": 1
 })
@@ -51,13 +51,7 @@ const loadTagsCategories = async (postId) => {
   })
 }
 
-const handleSaveDraft = () => {
-  postRef.value.visible = false
-  savePost()
-}
-
-const handlePublish = () => {
-  postRef.value.visible = true
+const handleSavePost = () => {
   savePost(true)
 }
 
@@ -184,6 +178,19 @@ const handleUploadCover = async (result) => {
           <el-input v-model="postRef.encrypt" placeholder="留空则不设置" style="width: 240px" type="password"/>
         </div>
 
+        <div class="visible">
+          <span>状态：</span>
+          <el-select
+              v-model="postRef.visible"
+              placeholder="Select"
+              style="width: 240px"
+          >
+            <el-option key="1" label="公开" value="1"/>
+            <el-option key="2" label="登陆可见" value="2"/>
+            <el-option key="0" label="草稿" value="0"/>
+          </el-select>
+        </div>
+
         <div class="cover">
           <span>图片：</span>
           <el-input v-model="postRef.cover" placeholder="Cover URL" style="width: 240px"/>
@@ -193,8 +200,7 @@ const handleUploadCover = async (result) => {
 
         <div class="opBtn">
           <el-button @click="handleCancel">取消</el-button>
-          <el-button type="primary" @click="handleSaveDraft">存草稿</el-button>
-          <el-button type="success" @click="handlePublish">发布</el-button>
+          <el-button type="success" @click="handleSavePost">发布</el-button>
         </div>
       </div>
     </div>
