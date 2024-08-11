@@ -24,7 +24,7 @@ const postRef = ref({
   "cover": null,
   "createTime": null,
   "updateTime": null,
-  "visible": "1",
+  "visible": 1,
   "encrypt": null,
   "type": 1
 })
@@ -185,9 +185,9 @@ const handleUploadCover = async (result) => {
               placeholder="Select"
               style="width: 240px"
           >
-            <el-option key="1" label="公开" value="1"/>
-            <el-option key="2" label="登陆可见" value="2"/>
-            <el-option key="0" label="草稿" value="0"/>
+            <el-option key="1" label="公开" :value="1"/>
+            <el-option key="2" label="登陆可见" :value="2"/>
+            <el-option key="0" label="草稿" :value="0"/>
           </el-select>
         </div>
 
