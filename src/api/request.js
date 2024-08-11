@@ -47,6 +47,7 @@ instance.interceptors.response.use(function (resp) {
                 message: '登录成功',
                 type: 'success',
             })
+            location.reload();
         })
     } else if (resp.data.code !== 0) {
         ElMessage.error(resp.data.msg)
