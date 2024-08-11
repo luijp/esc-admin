@@ -1,6 +1,15 @@
 <script setup>
 
-import {CircleCloseFilled, Comment, HomeFilled, List, Management, PictureFilled, Tools} from "@element-plus/icons-vue";
+import {
+  CircleCloseFilled,
+  Comment,
+  HomeFilled,
+  List,
+  Management, Opportunity,
+  PictureFilled,
+  Promotion,
+  Tools
+} from "@element-plus/icons-vue";
 import * as authApi from '../../api/auth.js'
 import {ElMessage} from "element-plus";
 
@@ -35,6 +44,24 @@ const handleLogout = async () => {
             <List/>
           </el-icon>
           <span>文章管理</span>
+        </div>
+      </RouterLink>
+
+      <RouterLink to="/page">
+        <div class="menuItem">
+          <el-icon size="28">
+            <Opportunity/>
+          </el-icon>
+          <span>页面管理</span>
+        </div>
+      </RouterLink>
+
+      <RouterLink to="/micro">
+        <div class="menuItem">
+          <el-icon size="28">
+            <Promotion/>
+          </el-icon>
+          <span>碎语管理</span>
         </div>
       </RouterLink>
 

@@ -9,6 +9,8 @@ import Admin from './view/Admin.vue'
 import Logout from './view/Logout.vue'
 import ListPost from "./view/Post/component/ListPost.vue"
 import UpdatePost from "./view/Post/component/UpdatePost.vue"
+import Page from './view/Page/index.vue'
+import Micro from './view/Micro/index.vue'
 
 const routes = [
     {
@@ -25,6 +27,8 @@ const routes = [
                     {path: '/post', component: ListPost, meta: {title: '文章列表'}},
                 ]
             },
+            {path: '/page', component: Page, meta: {title: '页面管理'}},
+            {path: '/micro', component: Micro, meta: {title: '碎语管理'}},
             {path: '/category', component: Category, meta: {title: '分类管理'}},
             {path: '/attach', component: Attach, meta: {title: '附件管理'}},
             {path: '/comment', component: Comment, meta: {title: '评论管理'}},
