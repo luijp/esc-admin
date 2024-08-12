@@ -99,7 +99,7 @@ const handleUploadCover = async (result) => {
         <div class="post-content">
           <el-input
               v-model="postRef.content"
-              :rows="50"
+              :rows="35"
               placeholder="Content"
               style="width: 98%;margin-bottom: 20px"
               type="textarea"
@@ -188,6 +188,18 @@ const handleUploadCover = async (result) => {
             <el-option key="1" label="公开" :value="1"/>
             <el-option key="2" label="登陆可见" :value="2"/>
             <el-option key="0" label="草稿" :value="0"/>
+          </el-select>
+        </div>
+
+        <div class="post-type">
+          <span>类型：</span>
+          <el-select
+              v-model="postRef.type"
+              placeholder="Select"
+              style="width: 240px"
+          >
+            <el-option key="1" label="文章" :value="1"/>
+            <el-option key="2" label="页面" :value="2"/>
           </el-select>
         </div>
 
