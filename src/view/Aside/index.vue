@@ -6,7 +6,7 @@ import {
   HomeFilled,
   List,
   Management, Opportunity,
-  PictureFilled,
+  PictureFilled, Platform,
   Promotion,
   Tools
 } from "@element-plus/icons-vue";
@@ -110,6 +110,17 @@ const handleLogout = async () => {
     </div>
 
     <div class="action">
+
+      <RouterLink to="/backup">
+        <div class="actionItem">
+
+          <el-icon size="28">
+            <Platform/>
+          </el-icon>
+          <span>备份</span>
+        </div>
+      </RouterLink>
+
       <RouterLink to="/setting">
         <div class="actionItem">
 

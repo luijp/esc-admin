@@ -13,6 +13,7 @@ import Page from './view/Page/index.vue'
 import Micro from './view/Micro/index.vue'
 import ListGallery from './view/Gallery/comment/ListGallery.vue'
 import UpdateGallery from "./view/Gallery/comment/UpdateGallery.vue";
+import Backup from './view/Backup/index.vue'
 
 const routes = [
     {
@@ -35,6 +36,7 @@ const routes = [
             {path: '/attach', component: Attach, meta: {title: '附件管理'}},
             {path: '/comment', component: Comment, meta: {title: '评论管理'}},
             {path: '/setting', component: Setting, meta: {title: '设置'}},
+            {path: '/backup', component: Backup, meta: {title: '备份'}},
             {path: '/tag', component: Tag, meta: {title: '标签管理'}},
             {path: '/gallery',
                 children: [
