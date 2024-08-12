@@ -50,7 +50,7 @@ const handleDelMicro = async (id)=>{
   <div class="post">
     <el-input
         v-model="postRef.content"
-        style="width: 500px"
+        style="width: 700px"
         placeholder="Your idea..."
         type="textarea"
         :rows="5"
@@ -113,7 +113,7 @@ const handleDelMicro = async (id)=>{
     padding: 10px;
     background-color: #FFFFFF;
     border-radius: 10px;
-    width: 80%;
+    width: 700px;
     .metaInfo{
       font-size: 12px;
       color: #939090;
