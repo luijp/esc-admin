@@ -11,6 +11,8 @@ import ListPost from "./view/Post/component/ListPost.vue"
 import UpdatePost from "./view/Post/component/UpdatePost.vue"
 import Page from './view/Page/index.vue'
 import Micro from './view/Micro/index.vue'
+import ListGallery from './view/Gallery/comment/ListGallery.vue'
+import UpdateGallery from "./view/Gallery/comment/UpdateGallery.vue";
 
 const routes = [
     {
@@ -20,7 +22,7 @@ const routes = [
             {path: '/', redirect: '/dashboard'},
             {path: '/dashboard', component: Dashboard, meta: {title: 'Dashboard'}},
             {
-                path: '/post', component: Post,
+                path: '/post',
                 children: [
                     {path: '/post/update/:id', component: UpdatePost, meta: {title: '更新文章'}},
                     {path: '/post/update', component: UpdatePost, meta: {title: '新文章'}},
@@ -34,6 +36,13 @@ const routes = [
             {path: '/comment', component: Comment, meta: {title: '评论管理'}},
             {path: '/setting', component: Setting, meta: {title: '设置'}},
             {path: '/tag', component: Tag, meta: {title: '标签管理'}},
+            {path: '/gallery',
+                children: [
+                    {path: '/gallery/update', component: UpdateGallery, meta: {title: '新建相册'}},
+                    {path: '/gallery/update/:id', component: UpdateGallery, meta: {title: '编辑相册'}},
+                    {path: '/gallery', component: ListGallery, meta: {title: '相册列表'}},
+                ]
+            },
         ]
     },
     {path: '/logout', component: Logout},

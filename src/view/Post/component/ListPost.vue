@@ -8,15 +8,16 @@ import {ElMessage, ElMessageBox} from "element-plus";
 const currentPage = ref(1)
 const isLoaded = ref(false)
 const postRef = ref(null)
-watchEffect(async () => {
-  postRef.value = (await postApi.getAllPost(currentPage.value)).data
-  isLoaded.value = true
-})
-
 const refreshPosts = async () => {
+  isLoaded.value = false
   postRef.value = (await postApi.getAllPost(currentPage.value)).data
   isLoaded.value = true
 }
+
+watchEffect(async () => {
+  await refreshPosts()
+})
+
 const router = useRouter()
 const handleNewPost = () => {
   router.push('/post/update')

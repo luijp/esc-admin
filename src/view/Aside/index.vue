@@ -56,6 +56,15 @@ const handleLogout = async () => {
         </div>
       </RouterLink>
 
+      <RouterLink to="/gallery">
+        <div class="menuItem">
+          <el-icon size="28">
+            <PictureFilled/>
+          </el-icon>
+          <span>相册管理</span>
+        </div>
+      </RouterLink>
+
       <RouterLink to="/micro">
         <div class="menuItem">
           <el-icon size="28">
