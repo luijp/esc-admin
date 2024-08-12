@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watchEffect} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import * as postApi from "../../../api/post.js";
 import {ElMessage} from "element-plus";
@@ -50,6 +50,10 @@ const isImgByName = (fileName)=>{
 }
 onMounted(async ()=>{
   await isGalleryIdValid()
+
+})
+
+watchEffect(async ()=>{
   await getAttachList()
 })
 
@@ -90,6 +94,9 @@ const handlePublish = async ()=>{
   }else{
     ElMessage.error("publish error")
   }
+}
+const handleCurrentPageChange = (pageNum)=>{
+  currentPageRef.value = pageNum
 }
 </script>
 
@@ -170,6 +177,15 @@ const handlePublish = async ()=>{
         <div class="overlay" v-if="galleryListRef.hasOwnProperty(attachItem.uuid)"></div>
       </div>
     </div>
+
+    <el-pagination
+        layout="prev, pager, next"
+        :total="attachRef.data.total"
+        :page-size="10"
+        :hide-on-single-page="false"
+        @current-change="handleCurrentPageChange"
+    />
+
     <div class="upload">
       <Upload @success="handleUploadSuccess" @error="handleUploadError"/>
     </div>
@@ -231,5 +247,8 @@ const handlePublish = async ()=>{
       }
     }
   }
+}
+.el-pagination{
+  margin-top: 20px;
 }
 </style>
