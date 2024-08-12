@@ -179,6 +179,7 @@ const handleCurrentPageChange = (pageNum)=>{
     </div>
 
     <el-pagination
+        v-if="isLoaded"
         layout="prev, pager, next"
         :total="attachRef.data.total"
         :page-size="10"
