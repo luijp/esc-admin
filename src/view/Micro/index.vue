@@ -24,7 +24,9 @@ watchEffect(async ()=>{
   microListRef.value = await postApi.getAllPost(pageNumRef.value,30,3)
   isLoadedRef.value = true
 })
-
+const handleCurrentPageChange = (pageNum)=>{
+  pageNumRef.value = pageNum
+}
 const handlePostMicro = async ()=>{
   if(postRef.value.content === ''){
     ElMessage.error("不得发布空内容")
@@ -75,6 +77,14 @@ const handleDelMicro = async (id)=>{
         <el-button type="danger" text @click="handleDelMicro(microItem.id)">删除</el-button>
       </div>
     </div>
+
+    <el-pagination
+        layout="prev, pager, next"
+        :total="microListRef.data.total"
+        :page-size="30"
+        :hide-on-single-page="false"
+        @current-change="handleCurrentPageChange"
+    />
   </div>
 </div>
 </template>
@@ -115,5 +125,9 @@ const handleDelMicro = async (id)=>{
       text-align: end;
     }
   }
+}
+
+.el-pagination{
+  margin-top: 20px;
 }
 </style>
