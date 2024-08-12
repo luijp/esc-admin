@@ -15,7 +15,7 @@ import Aside from './Aside/index.vue'
 
 <style scoped>
 .admin-container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
 }
 
