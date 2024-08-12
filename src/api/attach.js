@@ -16,7 +16,8 @@ export async function updateAttach({file}) {
             'Content-Type': 'multipart/form-data',
         },
     })
-    if (result.code !== 0 || result.data.success !== true) {
+    console.log(result)
+    if (result.code !== 0 || result.data[0].success !== true) {
         throw new Error()
     }
     return result
